@@ -1,19 +1,11 @@
-// rankController.js
-const Student = require('./Student');
+const Alert = require("../model/complane.model");
 
-function rankStudents(students) {
-  // Sort students by marks in descending order
-  students.sort((a, b) => b.marks - a.marks);
+const createAlert = async (req, res) => {
+  const notificationTime = new Date();
+  notificationTime.setHours(11, 50, 0, 0);
 
-  // Assign ranks
-  let rank = 1;
-  students.forEach((student) => {
-    student.rank = rank++;
-  });
-
-  return students;
-}
-
-module.exports = {
-  rankStudents,
+  const alert = await Alert.create({ user: req.body.user, submissionTime: new Date(), notificationTime });
+  res.json({ message: "Alert scheduled", alert });
 };
+
+module.exports = { createAlert };

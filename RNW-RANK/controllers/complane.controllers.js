@@ -1,19 +1,12 @@
-// rankController.js
-const Student = require('./Student');
+const Student = require("../model/complane.model");
+const rankMarks = (marks) => {
+  marks.sort((a, b) => b - a);
 
-function rankStudents(students) {
-  // Sort students by marks in descending order
-  students.sort((a, b) => b.marks - a.marks);
-
-  // Assign ranks
-  let rank = 1;
-  students.forEach((student) => {
-    student.rank = rank++;
+  marks.forEach((mark, index) => {
+    mark.rank = index + 1;
   });
-
-  return students;
-}
-
+  return marks;
+};
 module.exports = {
-  rankStudents,
+  rankMarks,
 };

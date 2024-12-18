@@ -1,9 +1,12 @@
-const mongoose = require("mongoose");
-const complaneschema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, required: true },
-  complane: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now },
+const mongoose = require('mongoose');
+
+const alertSchema = new mongoose.Schema({
+  user: { type: String, required: true },
+  submissionTime: { type: Date, required: true },
+  notificationTime: { type: Date, required: true },
+  status: { type: String, default: 'scheduled' }
 });
 
-const complane = mongoose.model("complane", complaneschema);
-module.exports = complane;
+const Alert = mongoose.model('Alert', alertSchema);
+
+module.exports = Alert;

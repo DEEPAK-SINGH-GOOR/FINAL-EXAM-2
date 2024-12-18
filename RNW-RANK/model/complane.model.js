@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
-const complaneschema = new mongoose.Schema({
-  user: { type: mongoose.Schema.Types.ObjectId, required: true },
-  complane: { type: String, required: true },
-  createdAt: { type: Date, default: Date.now },
+
+const studentSchema = new mongoose.Schema({
+  name: { type: String, required: true },
+  marks: { type: Number, required: true },
 });
 
-const complane = mongoose.model("complane", complaneschema);
-module.exports = complane;
+const Student = mongoose.model("Student", studentSchema);
+
+module.exports = Student;
